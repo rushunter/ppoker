@@ -2,6 +2,7 @@ import sys
 import pygame
 from core import Core
 from combo import Combo
+from translate import t, changeLanguage
 
 
 class PP:
@@ -37,7 +38,9 @@ class PP:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_l:
+                    changeLanguage()
+                elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                     if self.phase == 1:
                         self.core.change()
                         self.phase = -1
@@ -71,27 +74,28 @@ class PP:
                     self.screen.blit(card.get_sprite() if card.flipped else self.card_back_sprite, (i * 180 + 75, 320))
                     i += 1
 
-            self.screen.blit(font.render("Balance: " + str(self.core.balance), -1, (255, 255, 255)), (750, 30))
+            self.screen.blit(font.render(t("balance") + str(self.core.balance), -1, (255, 255, 255)), (600, 30))
 
             cmd = None
             if self.phase == 0:
-                cmd = "start"
+                cmd = t("game.state.start")
             else:
                 if self.phase == 1:
-                    cmd = "change"
+                    cmd = t("game.state.change")
                 elif self.phase == -1:
-                    cmd = "roll"
+                    cmd = t("game.state.roll")
 
             win_sum = 0
             if self.core.combo is not None:
-                if self.core.combo.comboType == Combo.INITIAL:
+                if self.core.combo == Combo.INITIAL:
                     win_sum = self.core.combo.rate
                 else:
                     win_sum = self.core.combo.rate * self.core.stake * self.core.multiplier
 
-            self.screen.blit(font_small.render("Press <Space> to " + cmd, -1, (255, 255, 255)), (750, 70))
-            self.screen.blit(font.render("" if self.core.combo is None else self.core.combo.display_name + ": +" + str(win_sum),
-                                         -1, (255, 255, 255)), (300, 50))
+            self.screen.blit(font_small.render(t("space") + cmd, -1, (255, 255, 255)), (600, 70))
+            self.screen.blit(font_small.render(t("language.change"), -1, (255, 255, 255)), (600, 100))
+            self.screen.blit(font.render("" if self.core.combo is None else t(self.core.combo.display_name) + ": +" + str(win_sum),
+                                         -1, (255, 255, 255)), (130, 50))
             pygame.display.update()
 
 

@@ -1,0 +1,18 @@
+{
+    "game.state.start": "start",
+    "game.state.roll": "roll",
+    "game.state.change": "change",
+    "balance": "Balance: ",
+    "space": "Press <Space> to ",
+    "language.change": "<L> to change language",
+    "combo.initial": "Initial fee",
+    "combo.pair": "Jacks or better",
+    "combo.two-pair": "Two pair",
+    "combo.3-of-kind": "3 of a kind",
+    "combo.straight": "Straight",
+    "combo.flush": "Flush",
+    "combo.full-house": "Full House",
+    "combo.4-of-kind": "4 of a kind",
+    "combo.straight-flush": "Straight Flush",
+    "combo.royal-flush": "Royal Flush"
+}

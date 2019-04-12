@@ -1,0 +1,18 @@
+{
+    "game.state.start": "начать",
+    "game.state.roll": "сдать",
+    "game.state.change": "сменить",
+    "balance": "Баланс: ",
+    "space": "Нажмите <Пробел>, чтобы ",
+    "language.change": "<L> для смены языка",
+    "combo.initial": "Начальный взнос",
+    "combo.pair": "Валеты или выше",
+    "combo.two-pair": "Две пары",
+    "combo.3-of-kind": "Тройка",
+    "combo.straight": "Стрит",
+    "combo.flush": "Флеш",
+    "combo.full-house": "Фулл-Хауз",
+    "combo.4-of-kind": "Каре",
+    "combo.straight-flush": "Стрит Флэш",
+    "combo.royal-flush": "Роял Флэш"
+}

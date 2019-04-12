@@ -6,7 +6,7 @@ from combo import ComboList, Combo
 class Core:
     MAX_MULTIPLIER = 5
     DEFAULT_STAKE = 10
-    START_BALANCE = 15
+    START_BALANCE = 500
 
     def __init__(self):
         self.deck = Deck()

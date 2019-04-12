@@ -1,4 +1,5 @@
 from enum import Enum, auto
+from translate import t
 
 
 class ComboInfo:
@@ -26,16 +27,16 @@ class ComboList:
 
     def __init__(self):
         self.combos = {
-            Combo.INITIAL: ComboInfo(Combo.INITIAL, "Initial fee", 0),
-            Combo.ROYAL_FLUSH: ComboInfo(Combo.ROYAL_FLUSH, "Royal Flush", 250),
-            Combo.STRAIGHT_FLUSH: ComboInfo(Combo.STRAIGHT_FLUSH, "Straight Flush", 50),
-            Combo.FOUR_OF_KIND: ComboInfo(Combo.FOUR_OF_KIND, "4 of a kind", 25),
-            Combo.FULL_HOUSE: ComboInfo(Combo.FULL_HOUSE, "Full House", 9),
-            Combo.FLUSH: ComboInfo(Combo.FLUSH, "Flush", 5),
-            Combo.STRAIGHT: ComboInfo(Combo.STRAIGHT, "Straight", 4),
-            Combo.THREE_OF_KIND: ComboInfo(Combo.THREE_OF_KIND, "3 of a kind", 3),
-            Combo.TWO_PAIR: ComboInfo(Combo.TWO_PAIR, "Two Pair", 2),
-            Combo.PAIR: ComboInfo(Combo.PAIR, "Jacks or better", 1)
+            Combo.INITIAL: ComboInfo(Combo.INITIAL, "combo.initial", 0),
+            Combo.ROYAL_FLUSH: ComboInfo(Combo.ROYAL_FLUSH, "combo.royal-flush", 250),
+            Combo.STRAIGHT_FLUSH: ComboInfo(Combo.STRAIGHT_FLUSH, "combo.straight-flush", 50),
+            Combo.FOUR_OF_KIND: ComboInfo(Combo.FOUR_OF_KIND, "combo.4-of-kind", 25),
+            Combo.FULL_HOUSE: ComboInfo(Combo.FULL_HOUSE, "combo.full-house", 9),
+            Combo.FLUSH: ComboInfo(Combo.FLUSH, "combo.flush", 5),
+            Combo.STRAIGHT: ComboInfo(Combo.STRAIGHT, "combo.straight", 4),
+            Combo.THREE_OF_KIND: ComboInfo(Combo.THREE_OF_KIND, "combo.3-of-kind", 3),
+            Combo.TWO_PAIR: ComboInfo(Combo.TWO_PAIR, "combo.two-pair", 2),
+            Combo.PAIR: ComboInfo(Combo.PAIR, "combo.pair", 1)
         }
 
     def set_initial_balance(self, value):
