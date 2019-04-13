@@ -43,12 +43,11 @@ class Core:
                 # take cards instead
                 self.hand.cards[i] = self.deck.get_top()
                 self.deck.add(card)
-        print("Deck: %d, Hand: %d" % (len(self.deck.cards), len(self.hand.cards)))
         # check combinations
         self.matchAny()
 
     def matchAny(self):
-        self.combo = self.combos.matchAny(self.hand)
+        self.combo = self.combos.match_any(self.hand)
         if self.combo is not None:
             self.balance += self.stake * self.combo.rate * self.multiplier
 

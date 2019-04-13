@@ -3,6 +3,7 @@ import pygame
 from core import Core
 from combo import Combo
 from translate import t, changeLanguage
+from sound import sound
 
 
 class PP:
@@ -30,7 +31,6 @@ class PP:
         font = pygame.font.SysFont("Courier New", 28)
         font.set_bold(True)
         font_small = pygame.font.SysFont("Courier New", 18)
-        # self.core.roll()
 
         while True:
             clock.tick(15)
@@ -43,6 +43,10 @@ class PP:
                 elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                     if self.phase == 1:
                         self.core.change()
+                        if self.core.combo is not None:
+                            sound("win")
+                        else:
+                            sound("flip1")
                         self.phase = -1
                     elif self.phase != 0 and self.core.balance < self.core.stake:
                             self.core.balance = 0
@@ -53,12 +57,14 @@ class PP:
                             self.core.set_initial_combo()
                             self.phase = -1
                     elif self.phase == -1:
+                        sound("roll")
                         self.core.roll()
                         self.phase = 1
 
                 elif self.phase == 1 and self.core.hand.cards and event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                     for i in range(len(self.card_rects)):
                         if self.card_rects[i].collidepoint(event.pos[0], event.pos[1]):
+                            sound("flip2")
                             self.core.hand.cards[i].flip()
                             break
 

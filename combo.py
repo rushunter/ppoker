@@ -1,5 +1,4 @@
 from enum import Enum, auto
-from translate import t
 
 
 class ComboInfo:
@@ -42,7 +41,7 @@ class ComboList:
     def set_initial_balance(self, value):
         self.combos[Combo.INITIAL].rate = value
 
-    def matchAny(self, hand):
+    def match_any(self, hand):
         for c in list(Combo):
             if self.__match(c, hand):
                 return self.combos[c]
@@ -60,17 +59,19 @@ class ComboList:
         if combo == Combo.FLUSH:
             return len(set(map(lambda x: x.suit, hand.cards))) == 1
         if combo == Combo.STRAIGHT:
-            ones = False
+            ones = 0
             for v in hand.group_by_rank().values():
                 if v == 1:
-                    ones = True
-                elif ones:
+                    ones += 1
+                elif ones > 0:
                     return None
-            return combo
+            if ones == 5:
+                return combo
+            return None
         if combo == Combo.THREE_OF_KIND:
             return len(list(filter(lambda x: x == 3, hand.group_by_rank().values()))) == 1
         if combo == Combo.TWO_PAIR:
-            return len(list(filter(lambda x: x == 2, hand.group_by_rank().values()))) == 2
+            return len(list(filter(lambda x: x >= 2, hand.group_by_rank().values()))) == 2
         if combo == Combo.PAIR:
             return 2 in [v for k, v in hand.group_by_rank().items() if k in ['jack', 'queen', 'king', 'ace']]
         return None

@@ -10,7 +10,9 @@ language = "en"
 messages = {}
 
 for lang in languages.keys():
-    with open("localization/" + lang + "/messages.json", "r") as jsonFile:
+    with open(file="localization/" + lang + "/messages.json",
+              mode="r",
+              encoding="utf-8") as jsonFile:
         messages[lang] = json.load(jsonFile)
 
 
