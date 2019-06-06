@@ -13,11 +13,11 @@ class TestCombo(unittest.TestCase):
         pygame.image.load.return_value = None
 
         hand = Hand()
-        hand.add(Card("ten", "hearts"))
-        hand.add(Card("jack", "spades"))
-        hand.add(Card("queen", "diamonds"))
-        hand.add(Card("king", "clubs"))
-        hand.add(Card("ace", "hearts"))
+        hand.add(Card("ten", "hearts", False))
+        hand.add(Card("six", "spades", False))
+        hand.add(Card("eight", "diamonds", False))
+        hand.add(Card("seven", "clubs", False))
+        hand.add(Card("nine", "hearts", False))
         c = ComboList()
         self.assertEqual(Combo.STRAIGHT, c.match_any(hand).combo_type)
 
@@ -26,11 +26,11 @@ class TestCombo(unittest.TestCase):
         pygame.image.load.return_value = None
 
         hand = Hand()
-        hand.add(Card("ten", "hearts"))
-        hand.add(Card("ten", "spades"))
-        hand.add(Card("jack", "diamonds"))
-        hand.add(Card("jack", "clubs"))
-        hand.add(Card("jack", "hearts"))
+        hand.add(Card("ten", "hearts", False))
+        hand.add(Card("ten", "spades", False))
+        hand.add(Card("jack", "diamonds", False))
+        hand.add(Card("jack", "clubs", False))
+        hand.add(Card("jack", "hearts", False))
         c = ComboList()
         self.assertEqual(Combo.FULL_HOUSE, c.match_any(hand).combo_type)
 

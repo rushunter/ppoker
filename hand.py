@@ -12,13 +12,13 @@ class Hand:
     def group_by_rank(self):
         ranks = {}
         for rank in Card.RANKS:
-            ranks[rank] = len(list(filter(lambda x: x.rank == rank, self.cards)))
+            ranks[rank] = len([x for x in self.cards if x.rank == rank])
         return ranks
 
     def group_by_suit(self):
         suits = {}
         for suit in Card.SUITS:
-            suits[suit] = len(list(filter(lambda x: x.suit == suit, self.cards)))
+            suits[suit] = len([x for x in self.cards if x.suit == suit])
         return suits
 
     def add(self, card):

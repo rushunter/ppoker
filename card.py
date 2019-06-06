@@ -5,11 +5,11 @@ class Card:
     RANKS = ['two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'jack', 'queen', 'king', 'ace']
     SUITS = ['hearts', 'spades', 'diamonds', 'clubs']
 
-    def __init__(self, rank, suit):
+    def __init__(self, rank, suit, init_sprite=True):
         self.rank = rank
         self.suit = suit
         self.flipped = True
-        self.__sprite = image.load("assets/img/cards/%s-%s.png" % (rank, suit)).convert_alpha()
+        self.__sprite = image.load("assets/img/cards/%s-%s.png" % (rank, suit)).convert_alpha() if init_sprite else None
 
     def flip(self):
         self.flipped = not self.flipped

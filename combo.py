@@ -64,7 +64,7 @@ class ComboList:
                 if v == 1:
                     ones += 1
                 elif ones > 0:
-                    return None
+                    break
             if ones == 5:
                 return combo
             return None
