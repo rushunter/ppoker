@@ -51,10 +51,10 @@ class Core:
         if self.combo is not None:
             self.balance += self.stake * self.combo.rate * self.multiplier
 
-    def changeMultiplier(self):
+    def changeMultiplier(self, m):
 
         prev = self.multiplier
         # increase multiplier or set to 1 if max
-        self.multiplier = 1 if self.multiplier == Core.MAX_MULTIPLIER else self.multiplier + 1
+        self.multiplier = m
         # modify balance considering new multiplier
         self.balance += self.stake * (prev - self.multiplier)
