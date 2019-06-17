@@ -24,6 +24,7 @@ class Core:
     def roll(self):
         self.combo = None
         if self.balance < self.stake:
+            self.multiplier = 1
             return
 
         # return cards to deck

@@ -60,7 +60,7 @@ class PP:
                         sound("roll")
                         self.core.roll()
                         self.phase = 1
-                elif event.type == pygame.KEYDOWN:
+                elif event.type == pygame.KEYDOWN and self.phase != 0:
                     if event.key == pygame.K_1:
                         self.core.changeMultiplier(1)
                     elif event.key == pygame.K_2:
@@ -111,7 +111,8 @@ class PP:
 
             self.screen.blit(font_small.render(t("space") + cmd, -1, (255, 255, 255)), (650, 70))
             self.screen.blit(font_small.render(t("language.change"), -1, (255, 255, 255)), (650, 100))
-            self.screen.blit(font_small.render(t("multiplier.change"), -1, (255, 255, 255)), (650, 130))
+            if self.phase != 0:
+                self.screen.blit(font_small.render(t("multiplier.change"), -1, (255, 255, 255)), (650, 130))
            
             self.draw_table()
             
@@ -120,8 +121,9 @@ class PP:
     def draw_table(self):
         font = pygame.font.SysFont("Tahoma", 18)
         # highlight multiplier
-        pygame.draw.rect(self.screen, (2, 137, 92), pygame.Rect(210+self.core.multiplier*70, 30, 69, 207))
-        if self.core.combo is not None:
+        if self.phase != 0:
+            pygame.draw.rect(self.screen, (2, 137, 92), pygame.Rect(210+self.core.multiplier*69, 30, 69, 207))
+        if self.core.combo is not None and self.core.combo.combo_type != Combo.INITIAL:
             # highlight win
             pygame.draw.rect(self.screen, (200, 0, 0), pygame.Rect(70, 30+(list(self.core.combos.combos.values()).index(self.core.combo)-1)*23, 555, 24))
         for i, c in enumerate(self.core.combos.combos.values()):

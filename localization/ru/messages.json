@@ -1,7 +1,7 @@
 {
     "game.state.start": "начать",
     "game.state.roll": "сдать",
-    "game.state.change": "сменить",
+    "game.state.change": "сменить карты",
     "balance": "Баланс: ",
     "space": "<Пробел>, чтобы ",
     "language.change": "<L> - смена языка",
